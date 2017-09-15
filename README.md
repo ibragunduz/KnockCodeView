@@ -21,6 +21,6 @@ allprojects {
 ```gradle
 
 dependencies {
-   compile 'com.github.ibragunduz:KnockCodeView:v.0.0.1'
+   compile 'com.github.ibragunduz:KnockCodeView:0.1'
 }
 ```
