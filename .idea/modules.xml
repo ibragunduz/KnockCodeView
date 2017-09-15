@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KnockCodeViewLibrary.iml" filepath="$PROJECT_DIR$/KnockCodeViewLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/knockcodeview/knockcodeview.iml" filepath="$PROJECT_DIR$/knockcodeview/knockcodeview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mylibrary/mylibrary.iml" filepath="$PROJECT_DIR$/mylibrary/mylibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
     </modules>
   </component>
