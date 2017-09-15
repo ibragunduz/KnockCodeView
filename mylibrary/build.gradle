@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
-apply plugin: 'com.jfrog.bintray'
+
+
 
 group = 'com.ibragunduz'
 version = '1.0'
@@ -36,30 +36,7 @@ dependencies {
 
 
 
-bintray {
-    user = 'ibragunduz'
-    key = '5db0a5774a493221118d2390481976a3384fdbb7'
-    filesSpec {
-        from 'build/libs'
-        into '.'
-    }
-    pkg {
-        repo = 'maven'
-        name = 'myLibrary'
-        desc = 'what a fantastic package indeed!'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/ibragunduz/KnockCodeView.git'
-        labels = ['gear', 'gore', 'gorilla']
-        publicDownloadNumbers = true
-        attributes= ['a': ['ay1', 'ay2'], 'b': ['bee'], c: 'cee'] //Optional package-level attributes
-        version {
-            name = '1.0-Final'
-            desc = 'Gradle Bintray Plugin 1.0 final'
-            vcsTag = '1.3.0'
-            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
-        }
-    }
-}
+
 
 
 
