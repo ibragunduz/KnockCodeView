@@ -1,1 +1,1 @@
-include ':sample', ':knockcodeview', ':mylibrary'
+include ':sample', ':knockcodeview'
