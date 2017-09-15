@@ -1,4 +1,4 @@
-#Knock-Code-View
+### Knock Code View
 ### Created to this app:
 <a href="https://play.google.com/store/apps/details?id=com.eywinapps.applocker">
 	<img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" height="60" />
