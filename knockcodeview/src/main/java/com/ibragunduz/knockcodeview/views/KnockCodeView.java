@@ -280,7 +280,7 @@ ClicksIndicatorView inditactor;
     public void inCorrectEntry() {
         clearClicks();
         firstClicked = false;
-        Toast.makeText(getContext(), "Yanlış giriş yaptınız tekrar deneyiniz", Toast.LENGTH_SHORT).show();
+clickDetector.inCorrectEntry();
 
     }
 
@@ -289,8 +289,7 @@ ClicksIndicatorView inditactor;
         clearClicks();
         firstClicked = false;
         isEntryTrue = true;
-        Toast.makeText(getContext(), "Giriş başarılı", Toast.LENGTH_SHORT).show();
-
+clickDetector.correctEntry();
     }
 
     private void clearClicks(){
