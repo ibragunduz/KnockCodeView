@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient_green">
+    android:background="#000">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
@@ -44,7 +44,7 @@
             <com.ibragunduz.knockcodeview.views.KnockCodeView
                 android:id="@+id/my_knock_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="150dp"
                 android:gravity="center|top"></com.ibragunduz.knockcodeview.views.KnockCodeView>
 
 

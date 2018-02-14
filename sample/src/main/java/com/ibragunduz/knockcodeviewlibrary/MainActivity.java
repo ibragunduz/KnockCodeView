@@ -21,11 +21,12 @@ public class MainActivity extends AppCompatActivity {
 
         final ClicksIndicatorView myIndicator = (ClicksIndicatorView)findViewById(R.id.my_knock_inditactor);
 
-        view.setInditactor(myIndicator);
+        //view.setInditactor(myIndicator);
 
-        view.setType(KnockCodeView.SET_PASSWORD);
-        view.setVibrationActive(true);
-        view.setTruePassword(new int[]{1,4,3});
+        view.setType(KnockCodeView.LOCK_SCREEN);
+        view.hideCenterLine(0);
+        //view.setVibrationActive(true);
+        //view.setTruePassword(new int[]{1,4,3});
 
 
 

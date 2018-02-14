@@ -131,8 +131,16 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
 
 
 
-    public void hideCenterLine(){
+    public void hideCenterLine(int resId)
+    {
+
+
+
+        if (resId!=0){
+            setLinesDrawable(resId);
+        }else{
         setLinesDrawable(R.drawable.line2);
+        }
     }
 
     public void resetClicksSquence(){
