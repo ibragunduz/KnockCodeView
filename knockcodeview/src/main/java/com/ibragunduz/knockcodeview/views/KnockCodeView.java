@@ -136,6 +136,7 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
     }
 
     public void resetClicksSquence(){
+        x=0;
          clearClicks();
         firstClicked = false;
 
@@ -212,7 +213,7 @@ ClicksIndicatorView inditactor;
     boolean firstClicked = false;
 
 
-    boolean x = true ;
+    int x = 0 ;
 
     @Override
     public void clickDetected(final int[] clicks) {
@@ -243,10 +244,9 @@ ClicksIndicatorView inditactor;
             public void run() {
 
                 if (clicks[clicks.length-1]!=-1){
-                    x=!x;
-                    if (x){
+
+                    if (++x==3){
                         resetClicksSquence();
-                        x = true;
                     }
                 }
 
