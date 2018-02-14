@@ -212,9 +212,12 @@ ClicksIndicatorView inditactor;
     boolean firstClicked = false;
 
 
+    boolean x = true ;
 
     @Override
     public void clickDetected(final int[] clicks) {
+
+
 
 
     if (getType() == LOCK_SCREEN){
@@ -235,7 +238,21 @@ ClicksIndicatorView inditactor;
 
 
 }else{
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
 
+                if (clicks[clicks.length-1]!=-1){
+                    x=!x;
+                    if (x){
+                        resetClicksSquence();
+                        x = true;
+                    }
+                }
+
+                }
+
+        },100);
     }
 
 

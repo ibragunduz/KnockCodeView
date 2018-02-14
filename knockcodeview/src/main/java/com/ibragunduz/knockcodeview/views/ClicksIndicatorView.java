@@ -55,18 +55,7 @@ public class ClicksIndicatorView extends RelativeLayout {
 
 
 
-        if (attributeSet!=null){
-            final TypedArray typedArray = context.obtainStyledAttributes(attributeSet,
-                    R.styleable.ClicksIndicatorView, 0, 0);
 
-
-            setHeightWidth(75,75);
-
-            setMargins((int) typedArray.getDimension(R.styleable.ClicksIndicatorView_in_views_margin,15));
-
-
-
-        }
         for (int i = 0;i<indicators.size();i++){
             indicators.get(i).setVisibility(View.GONE);
         }
