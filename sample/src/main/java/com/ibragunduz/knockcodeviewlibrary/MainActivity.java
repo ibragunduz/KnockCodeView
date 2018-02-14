@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         final ClicksIndicatorView myIndicator = (ClicksIndicatorView)findViewById(R.id.my_knock_inditactor);
 
         view.setInditactor(myIndicator);
+
         view.setType(KnockCodeView.SET_PASSWORD);
         view.setVibrationActive(true);
         view.setTruePassword(new int[]{1,4,3});
@@ -33,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void reset(View view){
-        this.view.resetClicksSquence();
-    }
 
 
 

@@ -10,10 +10,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.ibragunduz.knockcodeview.interfaces.ClickDetected;
 
@@ -23,7 +20,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import com.ibragunduz.knockcodeview.R;
 
-public class KnockCodeView extends RelativeLayout implements View.OnClickListener,ClickDetected {
+public class KnockCodeView extends LinearLayout implements View.OnClickListener,ClickDetected {
 
     public static final int SET_PASSWORD = 0;
     public static final int LOCK_SCREEN = 1;
@@ -46,11 +43,8 @@ public class KnockCodeView extends RelativeLayout implements View.OnClickListene
     private int[] clicksSquence = new int[8];
     private View rootView;
     private CardView card1,card2,card3,card4;
-    private  View cornerlt1,cornerlt2,cornerlb1,cornerlb2,cornerrt1,cornerrt2,cornerrb1,cornerrb2;
     private   List<CardView> cardViewsList;
-    private List<View> cornerViews;
-    private   LinearLayout layoutBack;
-    private View line1,line3,lineCenter;
+    private View lineCenter;
 
 
     private void initialize(Context context,AttributeSet attributeSet){
@@ -63,11 +57,8 @@ public class KnockCodeView extends RelativeLayout implements View.OnClickListene
         card3 = (CardView) rootView.findViewById(R.id.cardview_3);
         card4 = (CardView) rootView.findViewById(R.id.cardview_4);
 
-        line1 = (View) rootView.findViewById(R.id.knock_view_line1);
-        lineCenter = (View) rootView.findViewById(R.id.knock_view_line2_center);
-        line3 = (View) rootView.findViewById(R.id.knock_view_line3);
+        lineCenter = (View) rootView.findViewById(R.id.knock_view_line_center);
 
-        layoutBack = (LinearLayout) rootView.findViewById(R.id.knock_code_view_linear_layout_back);
 
         cardViewsList = new ArrayList<>();
         cardViewsList.add(card1);
@@ -77,27 +68,7 @@ public class KnockCodeView extends RelativeLayout implements View.OnClickListene
 
 
 
-        cornerlb1 =   rootView.findViewById(R.id.knock_view_corner_lb1);
-        cornerlb2 =   rootView.findViewById(R.id.knock_view_corner_lb2);
 
-        cornerlt1 =   rootView.findViewById(R.id.knock_view_corner_lt1);
-        cornerlt2 =   rootView.findViewById(R.id.knock_view_corner_lt2);
-
-        cornerrb1 =   rootView.findViewById(R.id.knock_view_corner_rb1);
-        cornerrb2 =   rootView.findViewById(R.id.knock_view_corner_rb2);
-
-        cornerrt1 =   rootView.findViewById(R.id.knock_view_corner_rt1);
-        cornerrt2 =   rootView.findViewById(R.id.knock_view_corner_rt2);
-
-        cornerViews = new ArrayList<>();
-        cornerViews.add(cornerlb1);
-        cornerViews.add(cornerlb2);
-        cornerViews.add(cornerlt1);
-        cornerViews.add(cornerlt2);
-        cornerViews.add(cornerrb1);
-        cornerViews.add(cornerrb2);
-        cornerViews.add(cornerrt1);
-        cornerViews.add(cornerrt2);
 
 
         for (CardView crd : cardViewsList){
@@ -118,10 +89,9 @@ public class KnockCodeView extends RelativeLayout implements View.OnClickListene
             final TypedArray typedArray = context.obtainStyledAttributes(attributeSet,
                     R.styleable.KnockCodeView, 0, 0);
 
-            setLineWidth((int) typedArray.getDimension(R.styleable.KnockCodeView_knock_line_width,5));
-            setButtonsColor(typedArray.getColor(R.styleable.KnockCodeView_knock_button_color,Color.TRANSPARENT));
-            setCornerColor(typedArray.getColor(R.styleable.KnockCodeView_knock_corner_color,Color.DKGRAY));
-            setLineColor(typedArray.getColor(R.styleable.KnockCodeView_knock_line_color,Color.LTGRAY));
+            setLinesDrawable(typedArray.getColor(R.styleable.KnockCodeView_knock_line_drawable,R.drawable.line));
+
+            setButtonsColor();
 
         }
 
@@ -161,6 +131,9 @@ public class KnockCodeView extends RelativeLayout implements View.OnClickListene
 
 
 
+    public void hideCenterLine(){
+        setLinesDrawable(R.drawable.line2);
+    }
 
     public void resetClicksSquence(){
          clearClicks();
@@ -212,6 +185,7 @@ public class KnockCodeView extends RelativeLayout implements View.OnClickListene
 ClicksIndicatorView inditactor;
     public void setInditactor(ClicksIndicatorView inditactor) {
         this.inditactor = inditactor;
+        inditactor.SetInditactor(new int[]{-1,-1,-1,-1,-1,-1,-1,-1});
 
     }
     int sure =0;
@@ -344,107 +318,23 @@ clickDetector.correctEntry();
     }
 
 
-    public void  setLineWidth(int width){
-
-        line1.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,width));
-        line3.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,width));
-        lineCenter.setLayoutParams(new LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.MATCH_PARENT));
 
 
-    }
-    public void setViewParams(int width,int height){
-
-        layoutBack.setLayoutParams(new RelativeLayout.LayoutParams(width, height));
-
-
-    }
-    public void setCornersParams(int width,int height){
-        width *=3;
-
-        //w>h
-        RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(width,height);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        cornerlb1.setLayoutParams(rlp);
-
-        rlp = new RelativeLayout.LayoutParams(width,height);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-        cornerlt1.setLayoutParams(rlp);
-
-        rlp = new RelativeLayout.LayoutParams(width,height);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-        cornerrt1.setLayoutParams(rlp);
-
-        rlp = new RelativeLayout.LayoutParams(width,height);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        cornerrb1.setLayoutParams(rlp);
-//h>w
-
-
-        rlp = new RelativeLayout.LayoutParams(height,width);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        cornerlb2.setLayoutParams(rlp);
-
-        rlp = new RelativeLayout.LayoutParams(height,width);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-        cornerlt2.setLayoutParams(rlp);
-
-        rlp = new RelativeLayout.LayoutParams(height,width);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-        cornerrt2.setLayoutParams(rlp);
-
-        rlp = new RelativeLayout.LayoutParams(height,width);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-        rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        cornerrb2.setLayoutParams(rlp);
-
-
-
-    }
-    public int getCornerWidth(){
-        return cornerlt1.getLayoutParams().width;
-    }
-    public int getCornerHeight(){
-        return cornerlt1.getLayoutParams().height;
-    }
-    public int getViewWidth(){
-        return layoutBack.getLayoutParams().width;
-    }
-    public int getViewHeight(){
-        return layoutBack.getLayoutParams().height;
-    }
     public void setClickDetector(ClickDetected detector){
         this.clickDetector = detector;
     }
-    public void setCornerColor(  int color){
-        for (View view : cornerViews){
 
-            view.setBackgroundColor(color);
-
-
-        }
-    }
-    public void setLineColor(int color){
-        line1.setBackgroundColor(color);
-        line3.setBackgroundColor(color);
-        lineCenter.setBackgroundColor(color);
-
-
-    }
-    public void setButtonsColor( int color){
+    public void setButtonsColor(){
         for (CardView crd : cardViewsList){
-            crd.setCardBackgroundColor(color);
+            crd.setCardBackgroundColor(Color.TRANSPARENT);
         }
 
     }
 
 
+    public void setLinesDrawable(int resId) {
+        lineCenter.setBackgroundResource(resId);
 
+    }
 }
 

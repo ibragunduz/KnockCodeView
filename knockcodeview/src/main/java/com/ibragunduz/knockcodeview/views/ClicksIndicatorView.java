@@ -54,20 +54,15 @@ public class ClicksIndicatorView extends RelativeLayout {
 
 
 
+
         if (attributeSet!=null){
             final TypedArray typedArray = context.obtainStyledAttributes(attributeSet,
                     R.styleable.ClicksIndicatorView, 0, 0);
 
 
-            SingleIndicatorView myInditactor = new SingleIndicatorView(context);
-            myInditactor.setLineWidth((int) typedArray.getDimension(R.styleable.ClicksIndicatorView_in_line_width,1));
-            myInditactor.setLineColor(typedArray.getColor(R.styleable.ClicksIndicatorView_in_line_color,Color.WHITE));
-            myInditactor.setClickedColor(typedArray.getColor(R.styleable.ClicksIndicatorView_in_selected_color,Color.DKGRAY));
-            myInditactor.setColorButtons(typedArray.getColor(R.styleable.ClicksIndicatorView_in_button_color,Color.LTGRAY));
-            SetSingleIndicator(myInditactor);
+            setHeightWidth(75,75);
 
-            setMargins((int) typedArray.getDimension(R.styleable.ClicksIndicatorView_in_views_margin,5));
-
+            setMargins((int) typedArray.getDimension(R.styleable.ClicksIndicatorView_in_views_margin,15));
 
 
 
@@ -80,19 +75,18 @@ public class ClicksIndicatorView extends RelativeLayout {
 
         }
 
-    public void SetSingleIndicator(SingleIndicatorView sngleIndicator){
-     for (int i = 0; i<indicators.size();i++){
-         indicators.get(i).setColorButtons(sngleIndicator.getColorButtons());
-         indicators.get(i).setClickedColor(sngleIndicator.getClickedColor());
-         indicators.get(i).setLineColor(sngleIndicator.getLineColor());
-         indicators.get(i).setLineWidth(sngleIndicator.getLineWidth());
 
 
-     }
+
+public void setHeightWidth(int w,int h){
+    for (int i = 0; i<indicators.size();i++){
+        ViewGroup.LayoutParams p = (ViewGroup.MarginLayoutParams) indicators.get(i).getLayoutParams();
+        p.height = h;
+        p.width = w;
+
+        indicators.get(i).requestLayout();
     }
-
-
-
+}
 
 public void setMargins(int width){
     for (int i = 0; i<indicators.size();i++){
@@ -107,7 +101,9 @@ public void SetInditactor(int[] clicks){
         switch (clicks[i]){
 
             case -1 :
-                indicators.get(i).setVisibility(View.GONE);
+                indicators.get(i).setVisibility(View.VISIBLE);
+                indicators.get(i).setBackgroundResource(R.drawable.ic_knock_code_empty);
+
                 break;
             case 1 :
             case 2 :

@@ -1,30 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="SingleIndicatorView">
-        <attr name="button_color" format="color" />
-        <attr name="line_color" format="color" />
-        <attr name="selected_color" format="color" />
-        <attr name="line_width" format="dimension" />
 
 
-    </declare-styleable>
-
-    <declare-styleable name="ClicksIndicatorView">
-        <attr name="in_button_color" format="color" />
-        <attr name="in_line_color" format="color" />
-        <attr name="in_selected_color" format="color" />
-        <attr name="in_line_width" format="dimension" />
-        <attr name="in_views_margin" format="dimension" />
-
-
-    </declare-styleable>
 
     <declare-styleable name="KnockCodeView">
-        <attr name="knock_button_color" format="color" />
-        <attr name="knock_line_color" format="color" />
-        <attr name="knock_selected_color" format="color" />
-        <attr name="knock_line_width" format="dimension" />
-        <attr name="knock_corner_color" format="color" />
+        <attr name="knock_line_drawable" format="integer" />
 
 
 

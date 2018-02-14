@@ -1,188 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
-    android:id="@+id/knock_code_view_linear_layout_back"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools">
 
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardview_1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="0dp"
-            android:layout_weight="1"
-            app:cardBackgroundColor="#00ffffff"
-            app:cardCornerRadius="0dp"
-            card_view:cardElevation="0dp">
+            android:orientation="vertical">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-                <View
-                    android:id="@+id/knock_view_corner_lt1"
-                    android:layout_width="21dp"
-                    android:layout_height="3dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:background="#4e4e4e" />
-
-                <View
-                    android:id="@+id/knock_view_corner_lt2"
-                    android:layout_width="3dp"
-                    android:layout_height="21dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:background="#4e4e4e" />
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardview_1"
+                    app:cardCornerRadius="0dp"
+                    card_view:cardElevation="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0dp"
+                    android:layout_weight="1">
 
 
-            </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardview_2"
+                    app:cardBackgroundColor="#00ffffff"
+                    app:cardCornerRadius="0dp"
+                    card_view:cardElevation="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0dp"
+                    android:layout_weight="1">
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardview_3"
+                    app:cardBackgroundColor="#00ffffff"
+                    app:cardCornerRadius="0dp"
+                    card_view:cardElevation="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0dp"
+                    android:layout_weight="1">
 
 
-        </android.support.v7.widget.CardView>
 
-        <View
-            android:id="@+id/knock_view_line1"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="@color/colorAccent" />
+                </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardview_3"
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardview_4"
+                    app:cardBackgroundColor="#00ffffff"
+                    app:cardCornerRadius="0dp"
+                    card_view:cardElevation="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0dp"
+                    android:layout_weight="1">
+
+
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/knock_view_line_center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="0dp"
-            android:layout_weight="1"
-            app:cardBackgroundColor="#00ffffff"
-            app:cardCornerRadius="0dp"
-            card_view:cardElevation="0dp">
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <View
-                    android:id="@+id/knock_view_corner_lb1"
-                    android:layout_width="20dp"
-                    android:layout_height="2dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:background="#4e4e4e" />
-
-                <View
-                    android:id="@+id/knock_view_corner_lb2"
-                    android:layout_width="3dp"
-                    android:layout_height="21dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:background="#4e4e4e" />
+            android:src="@drawable/line"/>
+    </RelativeLayout>
 
 
-            </RelativeLayout>
 
 
-        </android.support.v7.widget.CardView>
-    </LinearLayout>
-
-    <View
-        android:id="@+id/knock_view_line2_center"
-        android:layout_width="5dp"
-        android:layout_height="match_parent"
-        android:background="@color/colorAccent" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardview_2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="0dp"
-            android:layout_weight="1"
-            app:cardBackgroundColor="#00ffffff"
-            app:cardCornerRadius="0dp"
-            card_view:cardElevation="0dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <View
-                    android:id="@+id/knock_view_corner_rt1"
-                    android:layout_width="21dp"
-                    android:layout_height="3dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:background="#4e4e4e" />
-
-                <View
-                    android:id="@+id/knock_view_corner_rt2"
-                    android:layout_width="3dp"
-                    android:layout_height="21dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:background="#4e4e4e" />
-
-
-            </RelativeLayout>
-
-
-        </android.support.v7.widget.CardView>
-
-        <View
-            android:id="@+id/knock_view_line3"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="@color/colorAccent" />
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardview_4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="0dp"
-            android:layout_weight="1"
-            app:cardBackgroundColor="#00ffffff"
-            app:cardCornerRadius="0dp"
-            card_view:cardElevation="0dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <View
-                    android:id="@+id/knock_view_corner_rb1"
-                    android:layout_width="21dp"
-                    android:layout_height="3dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:background="#4e4e4e" />
-
-                <View
-                    android:id="@+id/knock_view_corner_rb2"
-                    android:layout_width="3dp"
-                    android:layout_height="21dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:background="#4e4e4e" />
-
-
-            </RelativeLayout>
-
-
-        </android.support.v7.widget.CardView>
-    </LinearLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

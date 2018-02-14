@@ -4,15 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@mipmap/ic_launcher"
     android:gravity="center"
     android:orientation="vertical">
 
 
     <com.ibragunduz.knockcodeview.views.ClicksIndicatorView
         android:id="@+id/my_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         app:in_button_color="@color/colorPrimary"
         app:in_line_color="@color/colorAccent"
         app:in_line_width="0.5dp"
@@ -24,8 +23,8 @@
 
     <com.ibragunduz.knockcodeview.views.KnockCodeView
         android:id="@+id/my_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
 
 
         />
