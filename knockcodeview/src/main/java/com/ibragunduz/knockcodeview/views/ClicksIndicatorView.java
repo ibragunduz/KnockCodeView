@@ -56,6 +56,7 @@ public class ClicksIndicatorView extends RelativeLayout {
 
 
 
+
         for (int i = 0;i<indicators.size();i++){
             indicators.get(i).setVisibility(View.GONE);
         }
@@ -65,6 +66,16 @@ public class ClicksIndicatorView extends RelativeLayout {
         }
 
 
+    public void setColorFilter(int color){
+        vw1.setColorFilter(color);
+        vw2.setColorFilter(color);
+        vw3.setColorFilter(color);
+        vw4.setColorFilter(color);
+        vw5.setColorFilter(color);
+        vw6.setColorFilter(color);
+        vw7.setColorFilter(color);
+        vw8.setColorFilter(color);
+    }
 
 
 public void setHeightWidth(int w,int h){

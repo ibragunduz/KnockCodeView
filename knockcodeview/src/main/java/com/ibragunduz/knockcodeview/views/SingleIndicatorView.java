@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.ibragunduz.knockcodeview.R;
@@ -60,6 +61,9 @@ public class SingleIndicatorView extends RelativeLayout  {
     }
 
 
+
+
+
     protected void setClicked(int which){
 
         int resID = k1;
@@ -69,7 +73,12 @@ public class SingleIndicatorView extends RelativeLayout  {
             case 3 : resID = k3;break;
             case 4 : resID = k4;break;
         }
-        setBackgroundResource(resID);
+        ((ImageView)findViewById(R.id.indicator_click_image_view)).setBackgroundResource(resID);
+    }
+
+
+    public void setColorFilter(int color){
+        ((ImageView)findViewById(R.id.indicator_click_image_view)).setColorFilter(color);
     }
 
 
