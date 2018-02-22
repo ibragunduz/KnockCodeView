@@ -2,7 +2,6 @@ package com.ibragunduz.knockcodeviewlibrary;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 
 import com.ibragunduz.knockcodeview.views.ClicksIndicatorView;
@@ -15,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.deneme);
+        setContentView(R.layout.activity_main);
 
         view = (KnockCodeView)findViewById(R.id.my_knock_view);
 

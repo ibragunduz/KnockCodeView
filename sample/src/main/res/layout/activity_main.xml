@@ -1,44 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:orientation="vertical">
-
-
-    <com.ibragunduz.knockcodeview.views.ClicksIndicatorView
-        android:id="@+id/my_indicator"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:in_button_color="@color/colorPrimary"
-        app:in_line_color="@color/colorAccent"
-        app:in_line_width="0.5dp"
-        app:in_selected_color="@color/cardview_shadow_start_color"
-
-        >
-
-    </com.ibragunduz.knockcodeview.views.ClicksIndicatorView>
-
-    <com.ibragunduz.knockcodeview.views.KnockCodeView
-        android:id="@+id/my_view"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-
-
-        />
-
+    android:background="#000">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="50">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Geçerli bir tıklama kilidi giriniz"/>
+</RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
-
-        <Button
+        android:layout_height="0dp"
+        android:layout_weight="200"
+        android:orientation="vertical">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:onClick="reset"
-            android:text="Sıfırla" />
+            android:layout_height="0dp"
+            android:layout_weight="35">
+            <com.ibragunduz.knockcodeview.views.ClicksIndicatorView
+                android:layout_width="match_parent"
+                android:id="@+id/my_knock_inditactor"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center|bottom"></com.ibragunduz.knockcodeview.views.ClicksIndicatorView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="165">
+
+            <com.ibragunduz.knockcodeview.views.KnockCodeView
+                android:id="@+id/my_knock_view"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="center|top"></com.ibragunduz.knockcodeview.views.KnockCodeView>
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25">
+
+        <ImageButton
+            android:src="@android:drawable/ic_menu_revert"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <ImageButton
+            android:src="@android:drawable/ic_menu_save"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
 
 
     </LinearLayout>

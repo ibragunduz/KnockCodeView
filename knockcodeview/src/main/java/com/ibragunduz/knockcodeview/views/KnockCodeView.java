@@ -3,6 +3,7 @@ package com.ibragunduz.knockcodeview.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
@@ -10,6 +11,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.ibragunduz.knockcodeview.interfaces.ClickDetected;
@@ -44,7 +46,7 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
     private View rootView;
     private CardView card1,card2,card3,card4;
     private   List<CardView> cardViewsList;
-    private View lineCenter;
+    private ImageView lineCenter;
 
 
     private void initialize(Context context,AttributeSet attributeSet){
@@ -57,7 +59,7 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
         card3 = (CardView) rootView.findViewById(R.id.cardview_3);
         card4 = (CardView) rootView.findViewById(R.id.cardview_4);
 
-        lineCenter = (View) rootView.findViewById(R.id.knock_view_line_center);
+        lineCenter = (ImageView) rootView.findViewById(R.id.knock_view_line_center);
 
 
         cardViewsList = new ArrayList<>();
@@ -130,6 +132,9 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
     }
 
 
+    public void setColorFilter(int color){
+        lineCenter.setColorFilter(color);
+    }
 
     public void hideCenterLine(int resId)
     {
