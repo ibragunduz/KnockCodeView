@@ -108,6 +108,13 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
     }
 
 
+    public void setColorFilter(int color){
+        lineCenter.setColorFilter(color);
+    }
+
+
+
+
 
 
 
