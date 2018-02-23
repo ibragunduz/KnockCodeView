@@ -80,11 +80,6 @@ public class ClicksIndicatorView extends RelativeLayout {
 
     
 
-    @Override
-    public void setBackgroundResource(int resid) {
-        ((ImageView)findViewById(R.id.indicator_click_image_view)).setBackgroundResource(resid);
-    }
-    
     
 public void setHeightWidth(int w,int h){
     for (int i = 0; i<indicators.size();i++){
