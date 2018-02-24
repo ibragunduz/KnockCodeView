@@ -218,7 +218,6 @@ ClicksIndicatorView inditactor;
                 public void run() {
                     if (++sure > 6 && firstClicked&&!isEntryTrue){
                         inCorrectEntry();
-                        Log.i("Süre : " ,sure+ "  ---" );
 
                     }
                 }
@@ -281,6 +280,7 @@ ClicksIndicatorView inditactor;
         }
         if (inditactor!=null){
             inditactor.SetInditactor(clicks);
+            Log.i("1","----");
         }
     }
 
@@ -367,7 +367,7 @@ clickDetector.correctEntry();
 
 
     public void setLinesDrawable(int resId) {
-        lineCenter.setBackgroundResource(resId);
+        lineCenter.setImageResource(resId);
 
     }
 }

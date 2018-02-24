@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,6 +107,8 @@ public void SetInditactor(int[] clicks){
             case -1 :
                 indicators.get(i).setVisibility(View.VISIBLE);
                 indicators.get(i).setBackgroundResource(R.drawable.ic_knock_code_empty);
+                Log.i("2","----");
+
 
                 break;
             case 1 :

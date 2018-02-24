@@ -88,9 +88,8 @@ public class SingleIndicatorView extends RelativeLayout  {
     }
 
 
-
-
-
-
-
+    @Override
+    public void setBackgroundResource(int resid) {
+        ((ImageView)findViewById(R.id.indicator_click_image_view)).setBackgroundResource(resid);
+    }
 }
