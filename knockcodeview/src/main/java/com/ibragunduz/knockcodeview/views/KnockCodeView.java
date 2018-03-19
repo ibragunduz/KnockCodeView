@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.media.Image;
+import android.os.Build;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
@@ -27,7 +29,6 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
     public static final int SET_PASSWORD = 0;
     public static final int LOCK_SCREEN = 1;
     private int type;
-    private boolean isVibrationActive = true;
 
     public KnockCodeView(Context context) {
         super(context);
@@ -229,14 +230,18 @@ ClicksIndicatorView inditactor;
     boolean firstClicked = false;
 
 
+    boolean isVibrationActive = true;
     int x = 0 ;
-
+    Vibrator v;
     @Override
     public void clickDetected(final int[] clicks) {
 
 
-
-
+        if (isVibrationActive) {
+            if (v == null)
+                v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+                v.vibrate(50);
+        }
     if (getType() == LOCK_SCREEN){
             sure = 0;
             firstClicked = true;
