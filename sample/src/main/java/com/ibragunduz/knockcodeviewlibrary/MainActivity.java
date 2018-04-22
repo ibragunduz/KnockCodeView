@@ -1,14 +1,14 @@
 package com.ibragunduz.knockcodeviewlibrary;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 
-import com.ibragunduz.knockcodeview.views.ClicksIndicatorView;
+import com.ibragunduz.knockcodeview.interfaces.ClickDetected;
+import com.ibragunduz.knockcodeview.views.lockScreen.IndicatorLockScreen;
 import com.ibragunduz.knockcodeview.views.KnockCodeView;
+import com.ibragunduz.knockcodeview.views.setLock.ClicksIndicatorView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,15 +21,16 @@ public class MainActivity extends AppCompatActivity {
 
         knockCodeView = (KnockCodeView)findViewById(R.id.my_knock_view);
 
-        final ClicksIndicatorView myIndicator = (ClicksIndicatorView)findViewById(R.id.my_knock_inditactor);
-
-        knockCodeView.setInditactor(myIndicator);
+        //final IndicatorLockScreen myIndicator = (IndicatorLockScreen)findViewById(R.id.my_knock_inditactor);
+        ClicksIndicatorView cc = (ClicksIndicatorView)findViewById(R.id.my_knock_inditactor);
+        knockCodeView.setInditactor(cc);
 
         knockCodeView.setType(KnockCodeView.SET_PASSWORD);
         knockCodeView.hideCenterLine(0);
 
+        cc.setHeightWidth(30,30);
         //knockCodeView.setVibrationActive(true);
-        //knockCodeView.setTruePassword(new int[]{1,4,3});
+        knockCodeView.setTruePassword(new int[]{1,4,3});
 
 
 

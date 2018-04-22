@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <com.ibragunduz.knockcodeview.views.SingleIndicatorView
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
             android:id="@+id/inditactor_view_1"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <com.ibragunduz.knockcodeview.views.SingleIndicatorView
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
             android:id="@+id/inditactor_view_2"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -37,7 +37,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <com.ibragunduz.knockcodeview.views.SingleIndicatorView
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
             android:id="@+id/inditactor_view_3"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -51,7 +51,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <com.ibragunduz.knockcodeview.views.SingleIndicatorView
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
             android:id="@+id/inditactor_view_4"
             android:layout_width="30dp"
             android:layout_centerVertical="true"
@@ -65,7 +65,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <com.ibragunduz.knockcodeview.views.SingleIndicatorView
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
             android:id="@+id/inditactor_view_5"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -79,7 +79,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <com.ibragunduz.knockcodeview.views.SingleIndicatorView
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
             android:id="@+id/inditactor_view_6"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -93,7 +93,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <com.ibragunduz.knockcodeview.views.SingleIndicatorView
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
             android:id="@+id/inditactor_view_7"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -108,7 +108,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <com.ibragunduz.knockcodeview.views.SingleIndicatorView
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
             android:id="@+id/inditactor_view_8"
             android:layout_width="30dp"
             android:layout_height="30dp"

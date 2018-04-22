@@ -23,8 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="35">
-            <com.ibragunduz.knockcodeview.views.ClicksIndicatorView
-                android:layout_width="match_parent"
+            <com.ibragunduz.knockcodeview.views.setLock.ClicksIndicatorView
+                android:layout_width="150dp"
                 android:id="@+id/my_knock_inditactor"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -33,7 +33,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
-                android:gravity="center|bottom"></com.ibragunduz.knockcodeview.views.ClicksIndicatorView>
+                android:gravity="center|bottom"></com.ibragunduz.knockcodeview.views.setLock.ClicksIndicatorView>
         </RelativeLayout>
 
         <RelativeLayout

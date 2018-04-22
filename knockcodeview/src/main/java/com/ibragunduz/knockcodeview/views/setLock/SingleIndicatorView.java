@@ -1,4 +1,4 @@
-package com.ibragunduz.knockcodeview.views;
+package com.ibragunduz.knockcodeview.views.setLock;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -69,7 +69,7 @@ public class SingleIndicatorView extends RelativeLayout {
     }
 
 
-    protected void setClicked(int which) {
+    public void setClicked(int which) {
 
         int resID = k1;
         switch (which) {
@@ -87,9 +87,12 @@ public class SingleIndicatorView extends RelativeLayout {
                 break;
         }
         ((ImageView) findViewById(R.id.indicator_click_image_view)).setBackgroundResource(resID);
+       }
+
+
+    public void updateViewWithDot(){
+        setBackgroundResource(R.drawable.circle_white);
     }
-
-
     public void setColorFilter(int color) {
         ((ImageView) findViewById(R.id.indicator_click_image_view)).setColorFilter(color);
     }

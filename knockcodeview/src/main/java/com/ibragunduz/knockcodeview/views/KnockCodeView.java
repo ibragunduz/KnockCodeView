@@ -3,8 +3,6 @@ package com.ibragunduz.knockcodeview.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.media.Image;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
@@ -23,6 +21,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import com.ibragunduz.knockcodeview.R;
+import com.ibragunduz.knockcodeview.views.lockScreen.IndicatorLockScreen;
+import com.ibragunduz.knockcodeview.views.setLock.ClicksIndicatorView;
 
 public class KnockCodeView extends LinearLayout implements View.OnClickListener,ClickDetected {
 
@@ -204,9 +204,19 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
 ClicksIndicatorView inditactor;
     public void setInditactor(ClicksIndicatorView inditactor) {
         this.inditactor = inditactor;
+        isTypeLockScreen=false;
         inditactor.SetInditactor(new int[]{-1,-1,-1,-1,-1,-1,-1,-1});
 
     }
+
+
+    private boolean isTypeLockScreen = false;
+    IndicatorLockScreen indicator;
+    public void setInditactor(IndicatorLockScreen inditactor) {
+        isTypeLockScreen=true;
+        this.indicator = inditactor;
+    }
+
     int sure =0;
   private   boolean isEntryTrue = false;
 
@@ -259,6 +269,7 @@ ClicksIndicatorView inditactor;
                }
 
 
+              indicator.updateClicks(clicks);
 }else{
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -293,7 +304,7 @@ ClicksIndicatorView inditactor;
     public void inCorrectEntry() {
         clearClicks();
         firstClicked = false;
-clickDetector.inCorrectEntry();
+        clickDetector.inCorrectEntry();
 
     }
 
