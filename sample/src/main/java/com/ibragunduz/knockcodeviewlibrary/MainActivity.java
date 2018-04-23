@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         knockCodeView.setType(KnockCodeView.LOCK_SCREEN);
         myIndicator.setIsSecretIndicator(false);
-        myIndicator.setBlack();
         knockCodeView.hideCenterLine(0);
 
 

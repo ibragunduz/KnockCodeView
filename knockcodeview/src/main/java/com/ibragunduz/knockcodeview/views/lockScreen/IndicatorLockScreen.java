@@ -71,7 +71,7 @@ public class IndicatorLockScreen extends RelativeLayout {
         for (SingleIndicatorView s : indicators){
             s.makeBlack();
         }
-        setColorFilter(Color.BLACK);
+        //setColorFilter(Color.BLACK);
     }
 
     public void setColorFilter(int color){
