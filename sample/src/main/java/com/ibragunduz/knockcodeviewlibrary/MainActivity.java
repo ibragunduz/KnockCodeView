@@ -23,12 +23,15 @@ public class MainActivity extends AppCompatActivity {
         knockCodeView = (KnockCodeView)findViewById(R.id.my_knock_view);
 
         final IndicatorLockScreen myIndicator = (IndicatorLockScreen)findViewById(R.id.my_knock_inditactor);
-        //ClicksIndicatorView cc = (ClicksIndicatorView)findViewById(R.id.my_knock_inditactor);
+        //ClicksIndicatorView myIndicator = (ClicksIndicatorView)findViewById(R.id.my_knock_inditactor);
 
         knockCodeView.setInditactor(myIndicator);
 
         knockCodeView.setType(KnockCodeView.LOCK_SCREEN);
+        myIndicator.setIsSecretIndicator(false);
+        myIndicator.setBlack();
         knockCodeView.hideCenterLine(0);
+
 
         knockCodeView.setClickDetector(new ClickDetected() {
             @Override
@@ -39,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void inCorrectEntry() {
 
-                knockCodeView.resetClicksSquence();
             }
 
             @Override
@@ -47,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
         myIndicator.setHeightWidth(50,50);
-        myIndicator.setIsSecretIndicator(false);
-        myIndicator.setColorFilter(Color.GRAY);
+        //myIndicator.setIsSecretIndicator(false);
+
 
 
         //knockCodeView.setVibrationActive(true);

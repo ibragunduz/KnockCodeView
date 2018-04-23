@@ -2,9 +2,16 @@ package com.ibragunduz.knockcodeview.views.setLock;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
+import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -109,10 +116,19 @@ public class SingleIndicatorView extends RelativeLayout {
 
 
 
+    public void makeBlack(){
+        isBlack = true;
+    }
+    boolean isBlack = false;
     public void updateViewWithDot(int normalWidth){
         if (normalWidth!=0)
         setLayoutHeightWidth(normalWidth/2,normalWidth/2);
-        setImageResource(R.drawable.circle_white);
+
+        if (isBlack)
+      setImageResource(R.drawable.circle_black);
+        else
+      setImageResource(R.drawable.circle_white);
+
     }
     public void setColorFilter(int color) {
         ((ImageView) rootView.findViewById(R.id.indicator_click_image_view)).setColorFilter(color);
