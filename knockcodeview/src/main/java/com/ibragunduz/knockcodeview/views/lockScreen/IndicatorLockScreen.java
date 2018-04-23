@@ -1,11 +1,13 @@
 package com.ibragunduz.knockcodeview.views.lockScreen;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.ibragunduz.knockcodeview.R;
 import com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView;
@@ -88,13 +90,23 @@ public class IndicatorLockScreen extends RelativeLayout {
             if ( i<clicks.length-1){
                 if (clicks[i+1]==-1){
                 indicators.get(i).setVisibility(View.VISIBLE);
-                indicators.get(i).setClicked(clicks[i]);
-                if (i>0)indicators.get(i-1).updateViewWithDot();
+                if (isSecretIndicator==false){
+
+                indicators.get(i).setClicked(clicks[i],normalSize);
+                if (i>0)indicators.get(i-1).updateViewWithDot(normalSize);
+                }else{
+                    indicators.get(i).updateViewWithDot(normalSize);
                 }
-            }else if(i==7){
-                indicators.get(i).setVisibility(View.VISIBLE);
-                indicators.get(i).setClicked(clicks[i]);
-                indicators.get(i-1).updateViewWithDot();
+                }
+            }else if(i==7) {
+                if (isSecretIndicator == false) {
+
+                    indicators.get(i).setVisibility(View.VISIBLE);
+                    indicators.get(i).setClicked(clicks[i], normalSize);
+                    indicators.get(i - 1).updateViewWithDot(normalSize);
+                }else{
+                    indicators.get(i).updateViewWithDot(normalSize);
+                }
             }
         }
     }
@@ -102,13 +114,17 @@ public class IndicatorLockScreen extends RelativeLayout {
 
 
 
+    boolean isSecretIndicator = false;
+
+    public void setIsSecretIndicator(boolean isSecretIndicator){
+        this.isSecretIndicator = isSecretIndicator;
+    }
+    int normalSize = 0;
 
     public void setHeightWidth(int w,int h){
+    normalSize=w;
         for (int i = 0; i<indicators.size();i++){
-            ViewGroup.LayoutParams p = (ViewGroup.MarginLayoutParams) indicators.get(i).getLayoutParams();
-            p.height = h;
-            p.width = w;
-            indicators.get(i).requestLayout();
+            indicators.get(i).setLayoutHeightWidth(w,h);
         }
     }
 
@@ -119,4 +135,7 @@ public class IndicatorLockScreen extends RelativeLayout {
             indicators.get(i).requestLayout();
         }
     }
+
+
+
 }

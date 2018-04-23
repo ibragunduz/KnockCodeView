@@ -4,68 +4,131 @@
     android:layout_height="wrap_content">
 
 
-    <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
-        android:id="@+id/inditactor_view_1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
-        android:layout_margin="3dp"
-        android:layout_weight="1" />
 
-    <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
-        android:id="@+id/inditactor_view_2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="3dp"
-        android:layout_weight="1" />
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
+            android:id="@+id/inditactor_view_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-    <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
-        android:id="@+id/inditactor_view_3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="3dp"
+            android:layout_weight="1" />
+</RelativeLayout>
 
-        android:layout_margin="3dp"
-        android:layout_weight="1" />
 
-    <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
-        android:id="@+id/inditactor_view_4"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
-        android:layout_margin="3dp"
-        android:layout_weight="1" />
 
-    <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
-        android:id="@+id/inditactor_view_5"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
+            android:id="@+id/inditactor_view_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="3dp"
+            android:layout_weight="1" />
+    </RelativeLayout>
 
-        android:layout_margin="3dp"
-        android:layout_weight="1" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
-    <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
-        android:id="@+id/inditactor_view_6"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
 
-        android:layout_margin="3dp"
-        android:layout_weight="1" />
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
+            android:id="@+id/inditactor_view_3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="3dp"
+            android:layout_weight="1" />
 
-    <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
-        android:id="@+id/inditactor_view_7"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
-        android:layout_margin="3dp"
-        android:layout_weight="1" />
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
+            android:id="@+id/inditactor_view_4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="3dp"
+            android:layout_weight="1" />
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+
+            <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
+                android:id="@+id/inditactor_view_5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="3dp"
+                android:layout_weight="1" />
+</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
+            android:id="@+id/inditactor_view_6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="3dp"
+            android:layout_weight="1" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+
+        <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
+            android:id="@+id/inditactor_view_7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="3dp"
+            android:layout_weight="1" />
+    </RelativeLayout>
+
+<RelativeLayout
+android:layout_width="wrap_content"
+android:layout_height="match_parent">
+
 
     <com.ibragunduz.knockcodeview.views.setLock.SingleIndicatorView
         android:id="@+id/inditactor_view_8"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_margin="3dp"
         android:layout_weight="1" />
+    </RelativeLayout>
 
 
 </LinearLayout>

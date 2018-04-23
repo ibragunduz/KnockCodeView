@@ -3,13 +3,18 @@ package com.ibragunduz.knockcodeview.views.setLock;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
 import com.ibragunduz.knockcodeview.R;
 
 
@@ -63,13 +68,14 @@ public class SingleIndicatorView extends RelativeLayout {
     }
 
 
-    @Override
-    public void setBackgroundResource(int resid) {
-        ((ImageView) findViewById(R.id.indicator_click_image_view)).setBackgroundResource(resid);
+    public void setImageResource(int resid) {
+        ((ImageView) rootView.findViewById(R.id.indicator_click_image_view)).setImageResource(resid);
+
+        Log.i("burada","burada");
     }
 
 
-    public void setClicked(int which) {
+    public void setClicked(int which,int bigSize) {
 
         int resID = k1;
         switch (which) {
@@ -86,15 +92,31 @@ public class SingleIndicatorView extends RelativeLayout {
                 resID = k4;
                 break;
         }
-        ((ImageView) findViewById(R.id.indicator_click_image_view)).setBackgroundResource(resID);
-       }
+
+      setImageResource(resID);
+        setLayoutHeightWidth(bigSize,bigSize);
+    }
 
 
-    public void updateViewWithDot(){
-        setBackgroundResource(R.drawable.circle_white);
+
+
+    public void setLayoutHeightWidth(int w,int h){
+        ViewGroup.LayoutParams p = (ViewGroup.MarginLayoutParams)getLayoutParams();
+        p.height = h;
+        p.width = w;
+        requestLayout();
+    }
+
+
+
+    public void updateViewWithDot(int normalWidth){
+        if (normalWidth!=0)
+        setLayoutHeightWidth(normalWidth/2,normalWidth/2);
+        setImageResource(R.drawable.circle_white);
     }
     public void setColorFilter(int color) {
-        ((ImageView) findViewById(R.id.indicator_click_image_view)).setColorFilter(color);
+        ((ImageView) rootView.findViewById(R.id.indicator_click_image_view)).setColorFilter(color);
+
     }
 
 }

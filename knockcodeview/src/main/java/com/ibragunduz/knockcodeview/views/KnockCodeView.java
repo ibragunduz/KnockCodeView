@@ -267,8 +267,6 @@ ClicksIndicatorView inditactor;
                        correctEntry();
                    }
                }
-
-
               indicator.updateClicks(clicks);
 }else{
         new Handler().postDelayed(new Runnable() {

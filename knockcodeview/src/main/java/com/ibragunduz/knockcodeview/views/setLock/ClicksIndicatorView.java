@@ -1,12 +1,17 @@
 package com.ibragunduz.knockcodeview.views.setLock;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
 import com.ibragunduz.knockcodeview.R;
 
 import java.util.ArrayList;
@@ -74,13 +79,17 @@ public class ClicksIndicatorView extends RelativeLayout {
         vw6.setColorFilter(color);
         vw7.setColorFilter(color);
         vw8.setColorFilter(color);
+
+        
     }
 
 
     
 
-    
+
+    int normalSize=50;
 public void setHeightWidth(int w,int h){
+    normalSize =w;
     for (int i = 0; i<indicators.size();i++){
         ViewGroup.LayoutParams p = (ViewGroup.MarginLayoutParams) indicators.get(i).getLayoutParams();
         p.height = h;
@@ -104,7 +113,7 @@ public void SetInditactor(int[] clicks){
 
             case -1 :
                 indicators.get(i).setVisibility(View.VISIBLE);
-                indicators.get(i).setBackgroundResource(R.drawable.ic_knock_code_empty);
+                indicators.get(i).setImageResource(R.drawable.ic_knock_code_empty);
                 Log.i("2","----");
 
 
@@ -115,7 +124,7 @@ public void SetInditactor(int[] clicks){
             case 4 :
                 indicators.get(i).setVisibility(View.VISIBLE);
 
-                indicators.get(i).setClicked(clicks[i]);
+                indicators.get(i).setClicked(clicks[i],normalSize);
                 break;
 
 
