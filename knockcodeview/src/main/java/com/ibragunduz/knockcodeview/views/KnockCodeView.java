@@ -109,9 +109,6 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
     }
 
 
-    public void setColorFilter(int color){
-        lineCenter.setColorFilter(color);
-    }
 
 
 
@@ -141,18 +138,6 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
 
 
 
-    public void hideCenterLine(int resId)
-    {
-
-
-
-        if (resId!=0){
-            setLinesDrawable(resId);
-        }else{
-        setLinesDrawable(R.drawable.line2);
-        }
-    }
-
     public void resetClicksSquence(){
         x=0;
          clearClicks();
@@ -178,28 +163,6 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
 
     }
 
-
-
-    private boolean isEntryIsTrue(int[] clicks){
-
-        for (int i = 0; i<clicks.length;i++){
-            if (clicks[i]!= getTruePassword()[i]){
-                return false;
-            }
-        }
-
-        return true;
-
-
-    }
-
-    public int getClicksCount(){
-        for (int i = 0; i< clicksSquence.length; i++){
-            if (clicksSquence[i]==-1)return i;
-
-        }
-        return clicksSquence.length;
-    }
 
 ClicksIndicatorView inditactor;
     public void setInditactor(ClicksIndicatorView inditactor) {
@@ -253,32 +216,20 @@ ClicksIndicatorView inditactor;
                 v.vibrate(50);
         }
     if (getType() == LOCK_SCREEN){
-            sure = 0;
-            firstClicked = true;
-            if (getClicksCount()==1 && !isTimerStarted){
-                timer.schedule(timertask, 0, 100);
-                isTimerStarted = true;
-            }
+            lockScreenClickDetected(clicks);
 
+        }else{
 
-                isEntryTrue = false;
-               if (clicks!=null){
-                   if (isEntryIsTrue(clicks)){
-                       correctEntry();
-                   }
-               }
-              indicator.updateClicks(clicks);
-}else{
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
 
-                if (clicks[clicks.length-1]!=-1){
+                    if (clicks[clicks.length-1]!=-1){
 
-                    if (++x==3){
-                        resetClicksSquence();
+                        if (++x==3){
+                            resetClicksSquence();
+                        }
                     }
-                }
 
                 }
 
@@ -294,7 +245,31 @@ ClicksIndicatorView inditactor;
         }
         if (inditactor!=null){
             inditactor.SetInditactor(clicks);
-            Log.i("1","----");
+        }
+    }
+
+
+
+
+
+    private void lockScreenClickDetected(int clicks[]){
+
+        sure = 0;
+        firstClicked = true;
+
+        if (getClicksCount()==1 && !isTimerStarted){
+            timer.schedule(timertask, 0, 100);
+            isTimerStarted = true;
+        }
+
+
+        isEntryTrue = false;
+        indicator.updateClicks(clicks);
+
+        if (clicks!=null){
+            if (isEntryIsTrue(clicks)){
+                correctEntry();
+            }
         }
     }
 
@@ -328,25 +303,45 @@ clickDetector.correctEntry();
 
 
 
-    public void setType(int type) {
-        this.type = type;
+
+
+
+    public void hideCenterLine(int resId)
+    {
+
+
+
+        if (resId!=0){
+            setLinesDrawable(resId);
+        }else{
+            setLinesDrawable(R.drawable.line2);
+        }
     }
 
-    public int getType() {
-        return type;
+    public void setColorFilter(int color){
+        lineCenter.setColorFilter(color);
     }
 
-    public boolean isVibrationActive() {
-        return isVibrationActive;
+    private boolean isEntryIsTrue(int[] clicks){
+
+        for (int i = 0; i<clicks.length;i++){
+            if (clicks[i]!= getTruePassword()[i]){
+                return false;
+            }
+        }
+
+        return true;
+
+
     }
 
-    public void setVibrationActive(boolean b) {
-        this.isVibrationActive = b;
+    public int getClicksCount(){
+        for (int i = 0; i< clicksSquence.length; i++){
+            if (clicksSquence[i]==-1)return i;
+
+        }
+        return clicksSquence.length;
     }
-
-
-
-
 
     private int[] truePassword;
     public int[] getTruePassword() {
@@ -361,13 +356,6 @@ clickDetector.correctEntry();
         }
         return truePassword;
     }
-    public void setTruePassword(int[] truePassword) {
-        this.truePassword = truePassword;
-    }
-
-
-
-
     public void setClickDetector(ClickDetected detector){
         this.clickDetector = detector;
     }
@@ -384,5 +372,26 @@ clickDetector.correctEntry();
         lineCenter.setImageResource(resId);
 
     }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public boolean isVibrationActive() {
+        return isVibrationActive;
+    }
+
+    public void setVibrationActive(boolean b) {
+        this.isVibrationActive = b;
+    }
+
+    public void setTruePassword(int[] truePassword) {
+        this.truePassword = truePassword;
+    }
+
 }
 

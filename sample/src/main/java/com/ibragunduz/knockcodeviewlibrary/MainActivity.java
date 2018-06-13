@@ -3,7 +3,9 @@ package com.ibragunduz.knockcodeviewlibrary;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 
 import com.ibragunduz.knockcodeview.interfaces.ClickDetected;
@@ -29,23 +31,23 @@ public class MainActivity extends AppCompatActivity {
 
         knockCodeView.setType(KnockCodeView.LOCK_SCREEN);
         myIndicator.setIsSecretIndicator(false);
-        knockCodeView.hideCenterLine(0);
 
 
         knockCodeView.setClickDetector(new ClickDetected() {
             @Override
             public void clickDetected(int[] clicks) {
+                Log.i("--","clicks : "+clicks.toString());
 
             }
 
             @Override
             public void inCorrectEntry() {
-
+                Toast.makeText(MainActivity.this, "yanlış", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void correctEntry() {
-
+                Toast.makeText(MainActivity.this, "doğru", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //knockCodeView.setVibrationActive(true);
+        knockCodeView.setVibrationActive(true);
         knockCodeView.setTruePassword(new int[]{1,4,3});
 
 
