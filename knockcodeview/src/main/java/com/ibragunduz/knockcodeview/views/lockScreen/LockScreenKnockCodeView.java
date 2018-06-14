@@ -161,12 +161,17 @@ public class LockScreenKnockCodeView extends LinearLayout implements View.OnClic
 
     boolean isVibrationActive = true;
     Vibrator v;
+    boolean isWillWait = false;
     @Override
     public void clickDetected(final int[] clicks) {
 
         if (isTimerStarted==false){
             startChecking();
         }
+
+
+        if (!isWillWait){
+
 
         vibrate();
         indicator.updateClicks(clicks);
@@ -182,6 +187,7 @@ public class LockScreenKnockCodeView extends LinearLayout implements View.OnClic
         isWillCount = true;
         counterClicked = 0;
     if (isEntryIsTrue(clicksSquence)){
+        isWillWait=true;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -190,7 +196,7 @@ public class LockScreenKnockCodeView extends LinearLayout implements View.OnClic
             }
         },250);
     }
-
+        }
     }
 
 
@@ -276,6 +282,7 @@ public class LockScreenKnockCodeView extends LinearLayout implements View.OnClic
         stopChecking();
         clearClicks();
         clickDetector.inCorrectEntry();
+        isWillWait = false;
 
     }
 
@@ -284,6 +291,7 @@ public class LockScreenKnockCodeView extends LinearLayout implements View.OnClic
         stopChecking();
         clearClicks();
         clickDetector.correctEntry();
+        isWillWait = false;
 
     }
 
