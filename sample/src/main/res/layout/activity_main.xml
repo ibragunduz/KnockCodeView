@@ -41,14 +41,14 @@
             android:layout_height="0dp"
             android:layout_weight="165">
 
-            <com.ibragunduz.knockcodeview.views.KnockCodeView
+            <com.ibragunduz.knockcodeview.views.lockScreen.LockScreenKnockCodeView
                 android:id="@+id/my_knock_view"
                 android:layout_width="250dp"
                 android:foregroundGravity="center"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_height="250dp"
-                android:gravity="center|top"></com.ibragunduz.knockcodeview.views.KnockCodeView>
+                android:gravity="center|top"></com.ibragunduz.knockcodeview.views.lockScreen.LockScreenKnockCodeView>
 
 
         </RelativeLayout>

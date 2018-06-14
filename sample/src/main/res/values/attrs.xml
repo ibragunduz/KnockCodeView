@@ -19,7 +19,7 @@
 
     </declare-styleable>
 
-    <declare-styleable name="KnockCodeView">
+    <declare-styleable name="SetLockKnockCode">
         <attr name="knock_button_color" format="color" />
         <attr name="knock_line_color" format="color" />
         <attr name="knock_selected_color" format="color" />

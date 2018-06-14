@@ -1,4 +1,4 @@
-package com.ibragunduz.knockcodeview.views;
+package com.ibragunduz.knockcodeview.views.lockScreen;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,37 +8,34 @@ import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
-import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.ibragunduz.knockcodeview.R;
 import com.ibragunduz.knockcodeview.interfaces.ClickDetected;
+import com.ibragunduz.knockcodeview.views.setLock.ClicksIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import com.ibragunduz.knockcodeview.R;
-import com.ibragunduz.knockcodeview.views.lockScreen.IndicatorLockScreen;
-import com.ibragunduz.knockcodeview.views.setLock.ClicksIndicatorView;
 
-public class KnockCodeView extends LinearLayout implements View.OnClickListener,ClickDetected {
+import static android.content.Context.WINDOW_SERVICE;
 
-    public static final int SET_PASSWORD = 0;
-    public static final int LOCK_SCREEN = 1;
-    private int type;
+public class LockScreenKnockCodeView extends LinearLayout implements View.OnClickListener,ClickDetected {
 
-    public KnockCodeView(Context context) {
+    public LockScreenKnockCodeView(Context context) {
         super(context);
         initialize(context,null);
     }
 
-    public KnockCodeView(Context context, @Nullable AttributeSet attrs) {
+    public LockScreenKnockCodeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initialize(context,attrs);
-
     }
 
 
@@ -51,8 +48,6 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
 
 
     private void initialize(Context context,AttributeSet attributeSet){
-        timer = new Timer();
-
 
         rootView =  LayoutInflater.from(context).inflate(R.layout.activity_knock_code_view, this);
         card1 = (CardView) rootView.findViewById(R.id.cardview_1);
@@ -70,10 +65,6 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
         cardViewsList.add(card4);
 
 
-
-
-
-
         for (CardView crd : cardViewsList){
             crd.setOnClickListener(this);
             crd.setPreventCornerOverlap(false);
@@ -85,14 +76,11 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
             clicksSquence[i] = -1;
         }
 
-
-
-
         if (attributeSet != null){
             final TypedArray typedArray = context.obtainStyledAttributes(attributeSet,
-                    R.styleable.KnockCodeView, 0, 0);
+                    R.styleable.SetLockKnockCode, 0, 0);
 
-            setLinesDrawable(typedArray.getColor(R.styleable.KnockCodeView_knock_line_drawable,R.drawable.line));
+            setLinesDrawable(typedArray.getColor(R.styleable.SetLockKnockCode_knock_line_drawable,R.drawable.line));
 
             setButtonsColor();
 
@@ -132,20 +120,13 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
 
         } else if (i == R.id.cardview_4) {
             addClickToSquence(4);
-
         }
     }
 
 
 
-    public void resetClicksSquence(){
-        x=0;
-         clearClicks();
-        firstClicked = false;
 
-        clickDetected(clicksSquence);
 
-    }
 
     private void addClickToSquence(int number){
 
@@ -164,141 +145,160 @@ public class KnockCodeView extends LinearLayout implements View.OnClickListener,
     }
 
 
-ClicksIndicatorView inditactor;
-    public void setInditactor(ClicksIndicatorView inditactor) {
-        this.inditactor = inditactor;
-        isTypeLockScreen=false;
-        inditactor.SetInditactor(new int[]{-1,-1,-1,-1,-1,-1,-1,-1});
-
-    }
 
 
-    private boolean isTypeLockScreen = false;
+
+
+
+
     IndicatorLockScreen indicator;
     public void setInditactor(IndicatorLockScreen inditactor) {
-        isTypeLockScreen=true;
         this.indicator = inditactor;
     }
 
-    int sure =0;
-  private   boolean isEntryTrue = false;
 
-    final Handler handler = new Handler();
-
-    TimerTask timertask = new TimerTask() {
-        @Override
-        public void run() {
-            handler.post(new Runnable() {
-                public void run() {
-                    if (++sure > 6 && firstClicked&&!isEntryTrue){
-                        inCorrectEntry();
-
-                    }
-                }
-            });
-        }
-    };
-    Timer timer;
-    boolean isTimerStarted=false;
-    boolean firstClicked = false;
 
 
     boolean isVibrationActive = true;
-    int x = 0 ;
     Vibrator v;
     @Override
     public void clickDetected(final int[] clicks) {
 
-
-        if (isVibrationActive) {
-            if (v == null)
-                v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-                v.vibrate(50);
+        if (isTimerStarted==false){
+            startChecking();
         }
-    if (getType() == LOCK_SCREEN){
-            lockScreenClickDetected(clicks);
 
-        }else{
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    if (clicks[clicks.length-1]!=-1){
-
-                        if (++x==3){
-                            resetClicksSquence();
-                        }
-                    }
-
-                }
-
-        },100);
-    }
-
-
-
-
+        vibrate();
+        indicator.updateClicks(clicks);
 
         if (clickDetector!=null){
             clickDetector.clickDetected(clicksSquence);
         }
-        if (inditactor!=null){
-            inditactor.SetInditactor(clicks);
-        }
+
+
+
+        currentClicks = clicks;
+
+        isWillCount = true;
+        counterClicked = 0;
+    if (isEntryIsTrue(clicksSquence)){
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+        correctEntry();
+
+            }
+        },250);
+    }
+
     }
 
 
+    /**
+     * Sıfır tıklama varsa hiçbirşey yapmayacak
+     * Her tıklamadan sonra
+     *
+     *
+     * **/
 
+    boolean isTimerStarted = false;
+    int counterClicked = 0;
+    boolean isWillCount = false;
+    Handler handlerChecking ;
+    Runnable runnableChecking = new Runnable() {
+        @Override
+        public void run() {
 
-
-    private void lockScreenClickDetected(int clicks[]){
-
-        sure = 0;
-        firstClicked = true;
-
-        if (getClicksCount()==1 && !isTimerStarted){
-            timer.schedule(timertask, 0, 100);
             isTimerStarted = true;
-        }
+            try {
 
 
-        isEntryTrue = false;
-        indicator.updateClicks(clicks);
+                if (isWillCount) {
+                    if (++counterClicked > 4) {
+                        if (currentClicks!=null){
+                            if (!isEntryIsTrue(currentClicks)){
+                                inCorrectEntry();
+                            }
+                            isWillCount = false;
+                        }
+                    }
+                }
 
-        if (clicks!=null){
-            if (isEntryIsTrue(clicks)){
-                correctEntry();
+
+
+
+
+
+
+                previousEntries = currentClicks;
+
+            }finally {
+                handlerChecking.postDelayed(runnableChecking,100);
             }
         }
+    };
+    private void startChecking(){
+        try {
+        if (handlerChecking==null) handlerChecking = new Handler();
+        runnableChecking.run();
+        }catch (Exception e){
+
+        }
+
     }
+    private void stopChecking(){
+        isTimerStarted = false;
+        handlerChecking.removeCallbacks(runnableChecking);
+    }
+
+
+
+    int previousEntries[];
+    int currentClicks[];
+
+
+
+    private void vibrate(){
+        if (isVibrationActive) {
+            if (v == null)
+                v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+            v.vibrate(50);
+        }
+    }
+
+
+
+
+
 
     @Override
     public void inCorrectEntry() {
+        stopChecking();
         clearClicks();
-        firstClicked = false;
         clickDetector.inCorrectEntry();
 
     }
 
     @Override
     public void correctEntry() {
+        stopChecking();
         clearClicks();
-        firstClicked = false;
-        isEntryTrue = true;
-clickDetector.correctEntry();
+        clickDetector.correctEntry();
+
     }
 
-    private void clearClicks(){
-
+    public void clearClicks(){
         for (int i = 0;i<clicksSquence.length;i++){
             clicksSquence[i] = -1;
         }
+        indicator.updateClicks(clicksSquence);
 
-        if (inditactor!=null){
-            inditactor.SetInditactor(clicksSquence);
-        }
+
+
     }
+
+
+
 
 
 
@@ -373,13 +373,7 @@ clickDetector.correctEntry();
 
     }
 
-    public void setType(int type) {
-        this.type = type;
-    }
 
-    public int getType() {
-        return type;
-    }
 
     public boolean isVibrationActive() {
         return isVibrationActive;

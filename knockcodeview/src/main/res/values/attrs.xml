@@ -3,7 +3,7 @@
 
 
 
-    <declare-styleable name="KnockCodeView">
+    <declare-styleable name="SetLockKnockCode">
         <attr name="knock_line_drawable" format="integer" />
 
 

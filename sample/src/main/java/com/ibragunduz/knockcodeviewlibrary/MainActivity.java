@@ -1,6 +1,5 @@
 package com.ibragunduz.knockcodeviewlibrary;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,30 +9,29 @@ import android.widget.Toast;
 
 import com.ibragunduz.knockcodeview.interfaces.ClickDetected;
 import com.ibragunduz.knockcodeview.views.lockScreen.IndicatorLockScreen;
-import com.ibragunduz.knockcodeview.views.KnockCodeView;
-import com.ibragunduz.knockcodeview.views.setLock.ClicksIndicatorView;
+import com.ibragunduz.knockcodeview.views.lockScreen.LockScreenKnockCodeView;
+import com.ibragunduz.knockcodeview.views.setLock.SetLockKnockCode;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    KnockCodeView knockCodeView;
+    LockScreenKnockCodeView setLockKnockCode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        knockCodeView = (KnockCodeView)findViewById(R.id.my_knock_view);
+        setLockKnockCode = (LockScreenKnockCodeView)findViewById(R.id.my_knock_view);
 
         final IndicatorLockScreen myIndicator = (IndicatorLockScreen)findViewById(R.id.my_knock_inditactor);
         //ClicksIndicatorView myIndicator = (ClicksIndicatorView)findViewById(R.id.my_knock_inditactor);
 
-        knockCodeView.setInditactor(myIndicator);
+        setLockKnockCode.setInditactor(myIndicator);
 
-        knockCodeView.setType(KnockCodeView.LOCK_SCREEN);
         myIndicator.setIsSecretIndicator(false);
 
 
-        knockCodeView.setClickDetector(new ClickDetected() {
+        setLockKnockCode.setClickDetector(new ClickDetected() {
             @Override
             public void clickDetected(int[] clicks) {
                 Log.i("--","clicks : "+clicks.toString());
@@ -47,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void correctEntry() {
+                //finish();
                 Toast.makeText(MainActivity.this, "doğru", Toast.LENGTH_SHORT).show();
             }
         });
@@ -56,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        knockCodeView.setVibrationActive(true);
-        knockCodeView.setTruePassword(new int[]{1,4,3});
+        setLockKnockCode.setVibrationActive(true);
+        setLockKnockCode.setTruePassword(new int[]{1,4,3});
 
 
 
@@ -67,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void asd(View view){
-        knockCodeView.resetClicksSquence();
+        setLockKnockCode.clearClicks();
+
     }
 
 
