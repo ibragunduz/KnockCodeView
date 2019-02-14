@@ -269,7 +269,7 @@ public class LockScreenKnockCodeView extends LinearLayout implements View.OnClic
         if (isVibrationActive) {
             if (v == null)
                 v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
-            v.vibrate(50);
+            v.vibrate(30);
         }
     }
 
