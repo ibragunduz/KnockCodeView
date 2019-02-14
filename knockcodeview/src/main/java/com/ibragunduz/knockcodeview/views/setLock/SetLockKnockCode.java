@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
