@@ -188,7 +188,7 @@ public class LockScreenKnockCodeView extends LinearLayout implements View.OnClic
         counterClicked = 0;
     if (isEntryIsTrue(clicksSquence)){
         isWillWait=true;
-        new Handler().postDelayed(new Runnable() {
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
         correctEntry();
@@ -245,7 +245,8 @@ public class LockScreenKnockCodeView extends LinearLayout implements View.OnClic
     };
     private void startChecking(){
         try {
-        if (handlerChecking==null) handlerChecking = new Handler();
+        if (handlerChecking==null) handlerChecking = 
+            ler(Looper.getMainLooper());
         runnableChecking.run();
         }catch (Exception e){
 
