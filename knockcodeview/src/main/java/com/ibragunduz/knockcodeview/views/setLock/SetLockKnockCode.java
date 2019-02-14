@@ -171,7 +171,7 @@ ClicksIndicatorView inditactor;
     int sure =0;
   private   boolean isEntryTrue = false;
 
-    final Handler handler = new Handler();
+    final Handler handler = new Handler(Looper.getMainLooper());
 
     TimerTask timertask = new TimerTask() {
         @Override
@@ -205,7 +205,7 @@ ClicksIndicatorView inditactor;
         }
 
 
-            new Handler().postDelayed(new Runnable() {
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
 
