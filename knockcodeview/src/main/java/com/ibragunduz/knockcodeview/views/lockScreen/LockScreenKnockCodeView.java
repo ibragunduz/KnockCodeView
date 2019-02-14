@@ -246,8 +246,7 @@ public class LockScreenKnockCodeView extends LinearLayout implements View.OnClic
     };
     private void startChecking(){
         try {
-        if (handlerChecking==null) handlerChecking = 
-            ler(Looper.getMainLooper());
+        if (handlerChecking==null) handlerChecking = new Handler(Looper.getMainLooper());
         runnableChecking.run();
         }catch (Exception e){
 
